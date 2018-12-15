@@ -1,0 +1,5 @@
+/.vs
+/NuGetProxy/bin
+/NuGetProxy/obj
+/NuGetProxy/Packages
+/NuGetProxy/Properties
