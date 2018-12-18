@@ -61,9 +61,16 @@ namespace NuGetProxy.Controllers
         {
             try
             {
+                string filter = Request.Query["$filter"].FirstOrDefault();
+                if (string.IsNullOrEmpty(filter)) filter = "IsLatestVersion";
+                string skip = Request.Query["$skip"].FirstOrDefault();
+                if (string.IsNullOrEmpty(skip)) skip = "0";
+                string top = Request.Query["$top"].FirstOrDefault();
+                if (string.IsNullOrEmpty(top)) top = "26";
+
                 using (WebClient client = new WebClient())
                 {
-                    string address = $"https://www.nuget.org/api/v2/Search()?$filter=IsLatestVersion&searchTerm={searchTerm}&targetFramework={targetFramework}&includePrerelease={includePrerelease}&$skip=0&$top=26&semVerLevel={semVerLevel}";
+                    string address = $"https://www.nuget.org/api/v2/Search()?$filter={filter}&searchTerm={searchTerm}&targetFramework={targetFramework}&includePrerelease={includePrerelease}&$skip={skip}&$top={top}&semVerLevel={semVerLevel}";
                     var res = await client.DownloadStringTaskAsync(address);
                     res = res.Replace("https://www.nuget.org", replateurl);
                     return res;
@@ -106,7 +113,7 @@ namespace NuGetProxy.Controllers
         {
             string path= System.IO.Directory.GetCurrentDirectory() + "/Packages";
 #if DEBUG
-            path = @"D:\work\2018\NuGetProxy\NuGetProxy\Packages";
+            path = @"c:\work\2018\NuGetProxy\NuGetProxy\Packages";
 #endif
             if (!System.IO.Directory.Exists(path))
             {
