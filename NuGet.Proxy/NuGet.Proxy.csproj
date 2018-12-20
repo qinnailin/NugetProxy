@@ -6,13 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlueFox.Log" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="sqlSugarCore" Version="4.9.7.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Packages\" />
+    <Content Update="appsettings.Development.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

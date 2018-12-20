@@ -3,3 +3,6 @@
 /NuGetProxy/obj
 /NuGetProxy/Packages
 /NuGetProxy/Properties
+/NuGet.Proxy/bin
+/NuGet.Proxy/obj
+/NuGet.Proxy/Properties
