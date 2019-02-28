@@ -55,7 +55,7 @@ namespace NuGet.Proxy.Controllers
             }
             catch (Exception ex)
             {
-                LogService.Error(ex);
+                //LogService.Error(ex);
                 return "Is Fail !!";
             }
         }
@@ -98,7 +98,7 @@ namespace NuGet.Proxy.Controllers
             }
             catch (Exception ex)
             {
-                LogService.Error(ex);
+                //LogService.Error(ex);
                 return "Is Fail !!";
             }
         }
@@ -127,7 +127,7 @@ namespace NuGet.Proxy.Controllers
             }
             catch (Exception ex)
             {
-                LogService.Error(ex);
+               // LogService.Error(ex);
                 return "Is Fail !!";
             }
         }
@@ -152,7 +152,7 @@ namespace NuGet.Proxy.Controllers
             }
             catch (Exception ex)
             {
-                LogService.Error(ex);
+                //LogService.Error(ex);
                 return "Is Fail !!";
             }
         }
@@ -175,7 +175,7 @@ namespace NuGet.Proxy.Controllers
             }
             catch (Exception ex)
             {
-                LogService.Error(ex);
+               // LogService.Error(ex);
                 return "Is Fail !!";
             }
         }
@@ -225,7 +225,7 @@ namespace NuGet.Proxy.Controllers
                 }
                 catch (Exception ex)
                 {
-                    LogService.Error(ex);
+                    //LogService.Error(ex);
                 }
                 return Download(path,fileName);
             }
@@ -252,7 +252,7 @@ namespace NuGet.Proxy.Controllers
             }
             catch (Exception ex)
             {
-                LogService.Error(ex);
+               // LogService.Error(ex);
             }
         }
 
