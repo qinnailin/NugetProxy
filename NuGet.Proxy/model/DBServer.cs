@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlueFox.Log;
 using SqlSugar;
 
 namespace NuGet.Proxy.model
@@ -13,14 +14,21 @@ namespace NuGet.Proxy.model
         {
             db = new SqlSugarClient(new ConnectionConfig {
                 ConnectionString = connstring,
-                DbType=DbType.SqlServer,
+                DbType=DbType.MySql,
                 IsAutoCloseConnection=true
             });
+            db.Ado.IsEnableLogEvent = true;
+
+            db.Ado.LogEventStarting = (sql, pars) =>
+            {
+                LogService.Error(sql + "\r\n" + db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
+            };
         }
 
         public ODataPackage Get(string id,string version)
         {
-            return db.Queryable<ODataPackage>().Where(w =>w.Id==id&&w.Version==version).First() ;
+            //var res = db.Queryable<ODataPackage>().Where(w=> w.NormalizedVersion == version).ToList();
+            return db.Queryable<ODataPackage>().Where(w =>w.Id==id&&(w.NormalizedVersion == version||w.Version==version)).First() ;
         }
 
         public void Save(ODataPackage bean)
